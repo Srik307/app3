@@ -40,7 +40,7 @@ const PatentList = ({setOpen}) => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-xl rounded-lg">
+    <div className="max-w-6xl  p-6 bg-white shadow-xl rounded-lg">
       {/* Search & Filter Controls */}
       <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
         <div className="flex items-center gap-6">

@@ -42,7 +42,7 @@ const ArticlesList = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto mt-5 p-6 bg-white shadow-xl rounded-lg">
+    <div className="max-w-6xl mt-5 p-6 bg-white shadow-xl rounded-lg">
       <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
         <h2 className="text-2xl font-semibold text-gray-800">Publications</h2>
         <input

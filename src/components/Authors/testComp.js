@@ -516,8 +516,6 @@ const smallcharts = {
           {descriptions[mainChart]}
         </motion.div>
 
-
-              {/* Small Charts Section */}
       <div className="flex flex-wrap gap-4">
         {Object.keys(charts).map((key) =>
           mainChart !== key ? (

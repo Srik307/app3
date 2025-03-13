@@ -64,7 +64,7 @@ const DocumentTextIcon = () => (
   </svg>
 );
 
-const Patents = ({setOpen}) => {
+const Patents = ({setOpen,id}) => {
   const [tab, setTab] = useState("documents");
   const [fields, setFields] = useState(["line", "pie"]);
   const curyear = new Date().getFullYear();
@@ -143,34 +143,33 @@ const Patents = ({setOpen}) => {
   
 
   return (
-    <div className="container mx-auto px-2 py-4 ">
+    <div className="container mx-auto px-2 py-4" id={"patents"}>
               {/* Metrics */}
-        <div className='grid grid-cols-[6fr_2fr] gap-4'>
+        <div className='grid grid-cols-[9fr_2fr] gap-4'>
 
 <PatentList setOpen={setOpen}/>
 
 <div>
-<div className="flex flex-row gap-2 items-center bg-white shadow-md rounded justify-start p-2 h-20 mb-3 ps-5">
-  <div>
-  <svg fill={"purple"} height="45" width="45" viewBox="0 0 512.001 512.001">
-<g>
-	<g>
-		<g>
-			<path d="M426.324,121.704c-0.704-0.704-65.13-65.12-116.48-116.472C306.471,1.856,301.845,0,297.211,0H98.305     c-9.863,0-17.86,7.996-17.86,17.86v445.015c0,9.863,7.996,17.86,17.86,17.86h97.136v13.387c0,15.848,19.247,23.874,30.488,12.629     l26.016-26.016h8.111l26.016,26.016c11.164,11.162,30.488,3.37,30.488-12.629v-13.387h97.136c9.863,0,17.86-7.996,17.86-17.86     V134.333C431.556,129.792,429.721,125.101,426.324,121.704z M315.076,60.979c9.743,9.743,35.816,35.815,55.499,55.498h-55.499     V60.979z M280.84,451.004l-12.211-12.21c-6.974-6.975-18.283-6.976-25.257,0l-12.211,12.21V412.63     c15.715,7.089,33.951,7.095,49.68,0V451.004z M280.84,357.403c0,13.696-11.142,24.839-24.839,24.839     c-13.696,0-24.839-11.141-24.839-24.842c0.007-13.702,11.151-24.85,24.839-24.85c13.688,0,24.833,11.146,24.839,24.85V357.403z      M395.835,445.015h-79.275v-87.612v-0.012v-0.009c-0.019-33.387-27.185-60.549-60.559-60.549     c-33.366,0-60.541,27.154-60.559,60.559v0.012v87.612h-79.277V35.72h163.19v98.617c0,9.863,7.996,17.86,17.86,17.86h98.621     V445.015z"/>
-			<path d="M172.414,152.196h56.799c9.863,0,17.86-7.996,17.86-17.86c0-9.863-7.996-17.86-17.86-17.86h-56.799     c-9.863,0-17.86,7.996-17.86,17.86C154.554,144.2,162.551,152.196,172.414,152.196z"/>
-			<path d="M154.554,197.259c0,9.863,7.996,17.86,17.86,17.86h167.172c9.863,0,17.86-7.996,17.86-17.86     c0-9.863-7.995-17.86-17.86-17.86H172.414C162.551,179.399,154.554,187.396,154.554,197.259z"/>
-			<path d="M339.587,242.321H172.414c-9.863,0-17.86,7.996-17.86,17.86c0,9.863,7.996,17.86,17.86,17.86h167.172     c9.863,0,17.86-7.996,17.86-17.86C357.446,250.317,349.451,242.321,339.587,242.321z"/>
-		</g>
-	</g>
-</g>
-</svg>
-  </div>
-  <h5 className="text-3xl font-bold text-gray-800">{author.metrics.hIndex}</h5>
-  <p className="text-lg text-gray-600">Total Patents</p>
+                            <h2 className="text-xl font-semibold mb-4">Overall Metrics</h2>
+                            <div className="grid grid-cols-1 gap-4">
+                              <div className="bg-green-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(0,0,0,0.2)]">
+                                <h4 className="text-md font-medium text-green-800">Authors</h4>
+                                <p className="text-2xl font-bold">500</p>
+                                <p className="text-sm text-gray-600">Active and passive</p>
+                              </div>
+                              <div className="bg-blue-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(1,1,1,0.2)]">
+                                <h4 className="text-md font-medium text-blue-800">Patents</h4>
+                                <p className="text-2xl font-bold">1020</p>
+                                <span className="text-sm text-gray-600">Research and Invention</span>
+                              </div>
+                              <div className="bg-purple-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(0,0,0,0.2)]">
+                                <h4 className="text-md font-medium text-purple-800">Articles</h4>
+                                <p className="text-2xl font-bold">3036</p>
+                                <p className="text-sm text-gray-600">Top percentile</p>
+                              </div>
+                            </div>
 </div>
 
-<ArticleMetrics />
-</div>
 
 
 </div>

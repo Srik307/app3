@@ -7,23 +7,22 @@ import ArticleView from "../components/Articles/ArticlesView";
 import Documents from "../pages/Documents";
 import Patents from "../pages/Patents";
 import Projects from "../pages/Projects";
-import Home from "./Home";
+import OverAllDashboard from "../pages/Overall";
 
 
 
-const Main = ({setOpen}) => {
+const Home = ({setOpen}) => {
 
     return (
-    <main className="p-4 h-screen">
-     <Routes>
-        <Route path="/" element={<></>} />
-        <Route path="/home" element={<Home setOpen={setOpen} />} />
-        <Route path="/author/:id" element={<AuthorProfile id={"profile"} setOpen={setOpen} />} />
-        <Route path="/papers/:id" element={<ArticleView id={"articleview"}/>} />
-      </Routes> 
-    </main>
+    <div>
+      <OverAllDashboard id={"dashboard"} />
+      <Authors id={"authors"} />
+      <Documents id={"documents"} />
+      <Patents setOpen={setOpen} id={"patents"} />
+      <Projects id={"projects"} /> 
+    </div>
     );
 
 };
 
-export default Main;
+export default Home;

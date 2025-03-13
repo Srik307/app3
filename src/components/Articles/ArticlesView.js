@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const ArticleView = () => {
+const ArticleView = ({id}) => {
   const paper = {
     title: "Slurry Erosion Resistance of Cold-Sprayed WC-17Co Coatings on CA6NM Steel Substrates: Experimental and Artificial Neural Network Modeling Analysis",
     authors: [
@@ -24,8 +24,18 @@ const ArticleView = () => {
     },
   };
 
+
+
+  useEffect(() => {
+    const element = document.getElementById("articleview");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+  
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4" id={id}>
       {/* Paper Title and Keywords */}
       <div className="mb-6">
         <h1 className="text-xl font-bold  mb-4">{paper.title}</h1>

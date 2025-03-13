@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaFileAlt, FaProjectDiagram, FaSignature } from "react-icons/fa";
 import { FaAtom, FaFileSignature } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -8,51 +8,39 @@ const SideNav = () => {
   const [isHovered, setIsHovered] = useState(false);
   const color = "#902BFF";
 
-  const pages = ["/overall", "/authors","/documents","/patents","/projects"];
-  const Navigate = useNavigate();
+  const pages = ["/dashboard", "/authors", "/documents", "/patents", "/projects"];
+  const navigate = useNavigate();
 
   const changePage = (index) => {
+    let flag=0;
     setActive(index);
-    Navigate(pages[index]);
+    if(window.location.pathname !== "/home") {
+      navigate("/home");
+      flag=1;
+    }
+    if(flag==1){
+    setTimeout(() => {
+    const sectionId = pages[index].replace("/", "");
+    const element = document.getElementById(sectionId);
+    if (element) {
+      console.log('element',element);
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  , 100);
+}
+  else{
+    const sectionId = pages[index].replace("/", "");
+    const element = document.getElementById(sectionId);
+    if (element) {
+      console.log('element',element);
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
   };
 
-  const BackIcon=(<svg fill="#000000" height="35" width="35" version="1.1" id="Capa_1" viewBox="0 0 26.676 26.676" >
-	<g>
-		<path d="M26.105,21.891c-0.229,0-0.439-0.131-0.529-0.346l0,0c-0.066-0.156-1.716-3.857-7.885-4.59   c-1.285-0.156-2.824-0.236-4.693-0.25v4.613c0,0.213-0.115,0.406-0.304,0.508c-0.188,0.098-0.413,0.084-0.588-0.033L0.254,13.815   C0.094,13.708,0,13.528,0,13.339c0-0.191,0.094-0.365,0.254-0.477l11.857-7.979c0.175-0.121,0.398-0.129,0.588-0.029   c0.19,0.102,0.303,0.295,0.303,0.502v4.293c2.578,0.336,13.674,2.33,13.674,11.674c0,0.271-0.191,0.508-0.459,0.562   C26.18,21.891,26.141,21.891,26.105,21.891z"/>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-		<g>
-		</g>
-	</g>
-	</svg>);
-	
-	const svgs=[
+
+  const svgs=[
 		//overall
 		<svg fill="#000000" height="40" width="40" version="1.1"  viewBox="0 0 286.439 286.439"  enable-background="new 0 0 286.439 286.439">
 	  <g fill={active==0?color:"#000000"}>
@@ -96,15 +84,15 @@ const SideNav = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div className="mt-4">
+        <img src="/logo.png" alt="Responsive Image" className="w-3/4 rounded-lg ml-2" />
+      </div>
       <nav>
         <ul className="space-y-2 mt-4">
-          <li className="flex items-center p-2 hover:bg-purple-light rounded">
-            {BackIcon}{isHovered && <span className="ml-2 text-sm text-black">Back</span>}
-          </li>
-          {["Dashboard","Authors","Documents","Patents","Projects"].map((item, index) => (
+          {["Dashboard", "Authors", "Documents", "Patents", "Projects"].map((item, index) => (
             <li
               key={index}
-              className="flex items-center justify-around p-2 hover:bg-purple-light rounded cursor-pointer"
+              className={`flex items-center justify-around p-2 hover:bg-purple-light rounded cursor-pointer ${active === index ? "bg-purple-100" : ""}`}
               onClick={() => changePage(index)}
             >
               {svgs[index]}
@@ -115,6 +103,8 @@ const SideNav = () => {
       </nav>
     </div>
   );
+
+
 };
 
 export default SideNav;

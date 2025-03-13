@@ -2,12 +2,11 @@ import React from "react";
 import AuthorsList from "../components/Authors/AuthorsList";
 import { authors } from "../sampledata";
 
-const Authors = () => {
+const Authors = ({id}) => {
 
     return (
-    <div className="p-4 grid grid-cols-[4fr_1fr] gap-4">
+    <div className="p-4 grid grid-cols-[9fr_2fr] gap-4" id={id}>
             <AuthorsList authors={authors} />
-
             <div>
                             <h2 className="text-xl font-semibold mb-4">Overall Metrics</h2>
                             <div className="grid grid-cols-1 gap-4">

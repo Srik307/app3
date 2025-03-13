@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
-import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart, 
-  Pie, 
-  Cell,
-  RadarChart,
-  Radar,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis
-} from 'recharts';
+import React, { useEffect, useState } from 'react';
 import AuthorDetails from './AuthorDetails';
-import { journaltrends } from '../../sampledata';
-import ArticlesList from '../Articles/ArticleList';
+import { articles } from '../../sampledata';
 import Dashboard from './testComp';
+import PatentList from '../Patents/PatentList';
+import ProjectList from '../Projects/ProjectsList';
+import AuthorPublications from './OtherLists/PublicationsList';
+import AuthorPatentList from './OtherLists/Patent';
+import AuthorProjectList from './OtherLists/Project';
+import CollaborativeTable from './OtherLists/CollabList';
+import BooksList from './OtherLists/BooksList';
+import GuideshipList from './OtherLists/GuideshipList';
+import NewCourseContentList from './OtherLists/NewCourseContentList';
+import InnovationProductList from './OtherLists/InnovationProductList';
+import MembershipList from './OtherLists/MembershipList';
+import EditorshipList from './OtherLists/EditorshipList';
+import ConferencesList from './OtherLists/ConferencesList';
+import AwardsList from './OtherLists/AwardsList';
 
 // Custom SVG Icons
 const ChartLineIcon = () => (
@@ -62,12 +55,20 @@ const DocumentTextIcon = () => (
   </svg>
 );
 
-const AuthorProfile = () => {
+const AuthorProfile = ({id,setOpen}) => {
   const [tab, setTab] = useState("documents");
   const [fields, setFields] = useState(["line", "pie"]);
   const curyear = new Date().getFullYear();
   const baseyr = 2015;
   const [yearRange, setYearRange] = useState([baseyr, curyear]);
+
+
+  useEffect(() => {
+    const element = document.getElementById("profile");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   const author = {
     name: "Sarah J. Thompson",
@@ -126,8 +127,11 @@ const AuthorProfile = () => {
     stat.year >= yearRange[0] && stat.year <= yearRange[1]
   );
 
+
+
+
   return (
-    <div className="container mx-auto px-4 py-6 ">
+    <div className="container mx-auto px-4 py-6" id={id}>
       {/* Author Details */}
       <AuthorDetails author={author} />
 
@@ -136,10 +140,42 @@ const AuthorProfile = () => {
 
 
 
-    <div className='mt-5 mb-10'>
-      <ArticlesList/>
+    <div className='mt-5 mb-5'>
+      <AuthorPublications />
     </div>
-
+    <div className='mt-5 mb-5'>
+      <AuthorPatentList setOpen={setOpen}/>
+    </div>
+    <div className='mt-5 mb-5'>
+      <AuthorProjectList />
+    </div>
+    <div className='mt-5 mb-5'>
+      <CollaborativeTable />
+    </div>
+    <div className="mt-5 mb-5">
+        <BooksList />
+      </div>
+      <div className="mt-5 mb-5">
+        <GuideshipList />
+      </div>
+      <div className="mt-5 mb-5">
+        <NewCourseContentList />
+      </div>
+      <div className="mt-5 mb-5">
+        <InnovationProductList />
+      </div>
+      <div className="mt-5 mb-5">
+        <MembershipList />
+      </div>
+      <div className="mt-5 mb-5">
+        <EditorshipList />
+      </div>
+      <div className="mt-5 mb-5">
+        <ConferencesList />
+      </div>
+      <div className="mt-5 mb-5">
+        <AwardsList />
+      </div>
       </div>
 
     );

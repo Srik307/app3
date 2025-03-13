@@ -21,7 +21,6 @@ const App = () => {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      <TopNav />
       <div className="flex flex-1 overflow-hidden">
         <SideNav />
         <div className="flex-1 overflow-y-auto bg-gray-100">

@@ -1,10 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submissionbyyear } from "../../sampledata";
-import RangeSlider from "../RangeSlider";
-import LineChartCustom from "../charts/LineChart";
-import Select from "react-select";
-import { FaNewspaper } from "react-icons/fa";
+// import RangeSlider from "../RangeSlider";
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 export default function ArticleMetrics() {
@@ -92,32 +89,31 @@ const Patents = [
 ];
 
   const charts = {
-    chart1:  <div style={{height:"200px"}} className="p-2 pl-4">
-                <h2 className="text-xl font-bold">Articles</h2>
+    chart1:  <div style={{height:"150px"}} className="p-2 pl-4">
+                <h2 className="text-lg font-medium">Articles</h2>
                 <div className="h-full overflow-hidden">
                   <ResponsiveContainer width="100%" height="100%">
-                    <PieChart >
+                    <PieChart margin={{ left: 0, right: 0, top: 10, bottom: 0 }}>
                       <Pie
                         data={ArticlesType}
                         cx="50%"
                         cy="50%"
-                        outerRadius={90}
+                        outerRadius={60}
                         fill="#8884d8"
-                        paddingAngle={5}
                         dataKey="count"
                       >
                         {ArticlesType.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={ArticlesColors[index % ArticlesColors.length]} />
                         ))}
                       </Pie>
-                      {mainChart === "chart2" && (
+                    
                     <Legend
         align="right"
         verticalAlign="top"
         layout="vertical"
         iconType="circle"
-        iconSize={12}
-        wrapperStyle={{ fontSize: 18 ,paddingRight:20}}
+        iconSize={7}
+        wrapperStyle={{ fontSize: 11 ,paddingRight:20}}
         content={({ payload }) => (
           <ul style={{ listStyle: "none", padding: 0 }}>
             {payload.map((entry, index) => {
@@ -141,14 +137,13 @@ const Patents = [
             })}
           </ul>
         )}/>
-    )}
                     <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
               </div>,
-    chart2: <div style={{height:"200px"}} className="p-2">
-                         <h2 className="text-xl font-bold mb-3">Scopus</h2>
+    chart2: <div style={{height:"150px"}} className="p-2">
+                         <h2 className="text-lg font-medium mb-3">Scopus</h2>
                          <div className="h-full overflow-hidden">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={Scopus} margin={{ left: 0, right: 7, top: 0, bottom: 0 }}>
@@ -165,8 +160,8 @@ const Patents = [
                   </ResponsiveContainer>
                 </div>
               </div>,
-    chart3: <div style={{height:"200px"}} className="p-2">
-    <h2 className="text-xl font-bold mb-3">Web of Science</h2>
+    chart3: <div style={{height:"150px"}} className="p-2">
+    <h2 className="text-lg font-medium mb-3">Web of Science</h2>
     <div className="h-full overflow-hidden">
 <ResponsiveContainer width="100%" height="100%">
 <LineChart data={WOS} margin={{ left: 0, right: 7, top: 0, bottom: 0 }}>
@@ -188,7 +183,7 @@ const Patents = [
 </div>,
 
  chart4:
- <div className="p-2" style={{height:"200px"}}>
+ <div className="p-2" style={{height:"150px"}}>
   <h2 className="text-xl font-bold">Patents</h2>
  <div className="h-full overflow-hidden">
  <ResponsiveContainer width="100%" >
@@ -208,7 +203,7 @@ const Patents = [
 const smallcharts = {
   chart1: (
     <div style={{ height: "80px" }} className="p-1 pl-2">
-      <h2 className="text-md font-bold">Articles</h2>
+      <h2 className="text-md font-bold mb-2">Articles</h2>
       <div className="h-full overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -216,7 +211,7 @@ const smallcharts = {
               data={ArticlesType}
               cx="50%"
               cy="55%"
-              outerRadius={40}
+              outerRadius={35}
               fill="#8884d8"
               dataKey="count"
             >
@@ -296,7 +291,7 @@ const smallcharts = {
         <motion.div
           key={mainChart}
           className="bg-white border border-purple-300 shadow-lg rounded mb-2"
-          style={{ height: "250px",width:"100%" }}
+          style={{ height: "200px",width:"100%" }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}

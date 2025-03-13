@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const AuthorDetails = ({ author }) => {
 
@@ -9,6 +9,12 @@ const AuthorDetails = ({ author }) => {
     "Orcid ID",
     "Extract Profile",
   ];
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
+  
+  
 
 
   return (

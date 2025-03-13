@@ -1,24 +1,4 @@
 import React, { useState } from 'react';
-import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  Legend, 
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart, 
-  Pie, 
-  Cell,
-  RadarChart,
-  Radar,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis
-} from 'recharts';
 import AuthorDetails from '../components/Authors/AuthorDetails';
 import { journaltrends} from '../sampledata';
 import ArticlesList from '../components/Articles/ArticleList';
@@ -63,7 +43,7 @@ const DocumentTextIcon = () => (
   </svg>
 );
 
-const Documents = () => {
+const Documents = ({id}) => {
   const [tab, setTab] = useState("documents");
   const [fields, setFields] = useState(["line", "pie"]);
   const curyear = new Date().getFullYear();
@@ -128,77 +108,36 @@ const Documents = () => {
   );
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
   return (
-    <div className="container mx-auto px-4 py-4 ">
+    <div className="container mx-auto px-4 py-4" id={id}>
               {/* Metrics */}
-        <div className='grid grid-cols-[5fr_2fr] gap-4'>
+        <div className='grid grid-cols-[9fr_2fr] gap-4'>
 
 <div>
-<div>
-          <div className="grid grid-cols-4 gap-4">
-
-            <div className="flex flex-row gap-2 items-center bg-white shadow-md rounded justify-start p-2 h-20">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                </svg>
-              </div>
-              <h5 className="text-2xl font-bold text-gray-800">{author.metrics.hIndex}</h5>
-              <p className="text-md text-gray-600">Projects</p>
-            </div>
-
-
-            
-            <div className="flex flex-row gap-2 items-center bg-white shadow-md rounded justify-start p-2 h-20">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                </svg>
-              </div>
-              <h5 className="text-2xl font-bold text-gray-800">{author.metrics.hIndex}</h5>
-              <p className="text-md text-gray-600">Projects</p>
-            </div>
-
-            <div className="flex flex-row gap-2 items-center bg-white shadow-md rounded justify-start p-2 h-20">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                </svg>
-              </div>
-              <h5 className="text-2xl font-bold text-gray-800">{author.metrics.hIndex}</h5>
-              <p className="text-md text-gray-600">Projects</p>
-            </div>
-
-            <div className="flex flex-row gap-2 items-center bg-white shadow-md rounded justify-start p-2 h-20">
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                </svg>
-              </div>
-              <h5 className="text-2xl font-bold text-gray-800">{author.metrics.hIndex}</h5>
-              <p className="text-md text-gray-600">Projects</p>
-            </div>
-          </div>
-
-</div>
 
 <ArticlesList />
 </div>
-<ArticleMetrics />
 
+<div>
+                            <h2 className="text-xl font-semibold mb-4">Overall Metrics</h2>
+                            <div className="grid grid-cols-1 gap-4">
+                              <div className="bg-green-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(0,0,0,0.2)]">
+                                <h4 className="text-md font-medium text-green-800">Authors</h4>
+                                <p className="text-2xl font-bold">500</p>
+                                <p className="text-sm text-gray-600">Active and Passive</p>
+                              </div>
+                              <div className="bg-blue-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(1,1,1,0.2)]">
+                                <h4 className="text-md font-medium text-blue-800">Patents</h4>
+                                <p className="text-2xl font-bold">1020</p>
+                                <span className="text-sm text-gray-600">Research and Invention</span>
+                              </div>
+                              <div className="bg-purple-50 p-4 rounded-lg shadow-[0_0px_10px_rgba(0,0,0,0.2)]">
+                                <h4 className="text-md font-medium text-purple-800">Articles</h4>
+                                <p className="text-2xl font-bold">3036</p>
+                                <p className="text-sm text-gray-600">Top percentile</p>
+                              </div>
+                            </div>
+                          </div>
 </div>
 
       </div>

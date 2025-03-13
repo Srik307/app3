@@ -246,14 +246,14 @@ const AuthorsList = () => {
           >
             <div className="flex items-center space-x-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center ">
                   <span className="text-blue-600 font-bold uppercase">
                     {staff.name.charAt(0)}
                   </span>
                 </div>
               </div>
               <div className="flex-grow">
-                <h3 className="text-lg font-semibold text-gray-800">{staff.name}</h3>
+                <h3 className="text-lg font-semibold text-gray-800 hover:underline">{staff.name}</h3>
                 <p className="text-sm text-gray-500">{staff.dept}</p>
               </div>
               <div className="text-sm text-gray-600">{staff.id}</div>
