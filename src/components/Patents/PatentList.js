@@ -104,7 +104,7 @@ const PatentList = ({setOpen}) => {
               sortedPatents.map((patent, index) => (
                 <tr key={index} className="hover:bg-gray-100 transition">
                   <td className="border p-3 text-center">{index + 1}</td>
-                  <td className="border p-3 text-blue-600 font-bold cursor-pointer hover:underline" onClick={()=>setOpen("patent")}>{patent.title}</td>
+                  <td className="border p-3 text-blue-600 text-md font-bold cursor-pointer hover:underline" onClick={()=>setOpen("patent")}>{patent.title}</td>
                   <td className="border p-3">{patent.inventors.join(", ")}</td>
                   <td className="border p-3">{patent.assignee}</td>
                   <td className="border p-3 text-center">{patent.filing_date}</td>

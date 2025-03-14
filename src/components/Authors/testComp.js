@@ -489,7 +489,7 @@ const smallcharts = {
   return (
     <div>
       {/* Main Chart Section */}
-      <div ref={mainBoxRef} className="grid grid-cols-[3fr_2fr_2fr] gap-4 mt-3">
+      <div ref={mainBoxRef} className="grid grid-cols-[3fr_2fr_2fr] gap-2 mt-3">
         {/* Main Chart Box */}
         <motion.div
           key={mainChart}
@@ -522,7 +522,7 @@ const smallcharts = {
             <motion.div
               key={key}
               className="bg-white shadow-lg rounded cursor-pointer hover:bg-blue-400 transition"
-              style={{ height: "140px",width:"150px" }}
+              style={{ height: "140px",width:"140px" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleSwap(key)}
